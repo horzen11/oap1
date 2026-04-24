@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ЛР1: Мій застосунок</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Реєстр обладнання кафедри з заявками на
+видачу</h1>
+      </header>
+      <form id="checkoutForm"
+  <div>
+    <label for="itemCode">Код обладнання:</label>
+      <input type="text" id="itemCode" required>
+  </div>
+  <div>
+    <label for="userName">Ім'я користувача:</label>
+        <input type="text" id="userName" required>
+  </div>
+  <div>
+    <label for="dateFrom">Дата видачі:</label>
+        <input type="date" id="dateFrom" required>
+  </div>
+  <div>
+    <label for="dateTo">Дата повернення:</label>
+        <input type="date" id="dateTo" required>
+  </div>
+  <div>
+    <label for="comment">Коментар:</label>
+        <textarea id="comment" rows="3"></textarea>
+  </div>
+  <div>
+    <label for="status">Статус:</label>
+<select id="status">
+  <option value="New" selected>New</option>
+            <option value="Approved">Approved</option>
+            <option value="Rejected">Rejected</option>
+</select>
+  </div>
+  <button type="submit">Створити запит</button>
+</form>
+
+<table border="1" id="requestsTable">
+    <thead>
+        <tr>
+            <th>Код</th>
+            <th>Користувач</th>
+            <th>З</th>
+            <th>По</th>
+            <th>Коментар</th>
+            <th>Статус</th>
+        </tr>
+    </thead>
+    <tbody id="tableBody">
+        </tbody>
+</table>
+  </body>
+</html>

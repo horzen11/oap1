@@ -1,0 +1,138 @@
+body {
+    background: linear-gradient(135deg, #d1e3ff 0%, #85a9ff 100%);
+    background-attachment: fixed;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #1a2a44;
+}
+
+.container {
+    width: 98%;
+    max-width: 1900px;
+}
+
+h1, h2 {
+    text-align: center;
+    color: #0d47a1; 
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 2px rgba(255,255,255,0.6);
+}
+
+
+form {
+    background: #5c7ca3; 
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.full-width {
+    grid-column: span 3;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #ffffff;
+    font-size: 1.1rem;
+}
+
+
+input, select, textarea {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1rem;
+    border: 2px solid #4a6a8a;
+    border-radius: 8px;
+    box-sizing: border-box;
+    background: #f0f7ff;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #00bcd4; 
+    background: #ffffff;
+}
+
+
+button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 18px;
+    background: #4fc3f7; 
+    color: #01579b; 
+    border: 1px solid #03a9f4;
+    border-radius: 8px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background: #81d4fa;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+
+.table-container {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 15px;
+    width: 100%;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #b0c4de;
+    padding: 15px;
+    text-align: left;
+    font-size: 1.1rem;
+}
+
+th {
+    background: #bbdefb; 
+    color: #0d47a1;
+    text-transform: uppercase;
+}
+
+tr:nth-child(even) {
+    background: #f1f8ff;
+}
+
+tr:hover {
+    background: #e1f5fe;
+}
+
+.error {
+    color: #d32f2f;
+    font-size: 14px;
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+.invalid {
+    border-color: #e57373 !important;
+    background-color: #ffebee !important;
+}
