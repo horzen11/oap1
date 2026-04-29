@@ -1,138 +1,157 @@
 body {
-    background: linear-gradient(135deg, #d1e3ff 0%, #85a9ff 100%);
-    background-attachment: fixed;
     margin: 0;
     font-family: Arial, sans-serif;
+    background: #cfe3ff;
     padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: #1a2a44;
+}
+
+.page-bg {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
 }
 
 .container {
-    width: 98%;
-    max-width: 1900px;
-}
-
-h1, h2 {
-    text-align: center;
-    color: #0d47a1; 
-    margin-bottom: 20px;
-    text-shadow: 1px 1px 2px rgba(255,255,255,0.6);
-}
-
-
-form {
-    background: #5c7ca3; 
-    padding: 40px;
-    border-radius: 15px;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
     width: 100%;
-    margin-bottom: 30px;
 }
 
-
-.form-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
+h1 {
+    text-align: center;
+    color: #1e3a5f;
+    margin-bottom: 15px;
 }
 
-.full-width {
-    grid-column: span 3;
+.form {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    margin-bottom: 20px;
 }
-
-label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-    color: #ffffff;
-    font-size: 1.1rem;
-}
-
 
 input, select, textarea {
     width: 100%;
-    padding: 15px;
-    font-size: 1.1rem;
-    border: 2px solid #4a6a8a;
+    padding: 10px;
+    margin-top: 6px;
+    margin-bottom: 5px;
+    border: 1px solid #cfd8e3;
     border-radius: 8px;
+    background: #f9fbfd;
     box-sizing: border-box;
-    background: #f0f7ff;
 }
 
-input:focus, select:focus, textarea:focus {
-    outline: none;
-    border-color: #00bcd4; 
-    background: #ffffff;
+.row {
+    display: flex;
+    gap: 10px;
 }
 
+.row input {
+    flex: 1;
+}
 
-button {
-    width: 100%;
-    margin-top: 20px;
-    padding: 18px;
-    background: #4fc3f7; 
-    color: #01579b; 
-    border: 1px solid #03a9f4;
+.buttons button {
+    padding: 10px 14px;
+    border: none;
     border-radius: 8px;
-    font-size: 1.3rem;
-    font-weight: bold;
+    color: white;
     cursor: pointer;
-    transition: all 0.3s ease;
 }
 
-button:hover {
-    background: #81d4fa;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+#submitBtn {
+    background: #2d7ef7;
 }
 
+#submitBtn:hover {
+    background: #1f66d1;
+}
 
-.table-container {
-    background: rgba(255, 255, 255, 0.9);
-    padding: 20px;
-    border-radius: 15px;
-    width: 100%;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
-    overflow-x: auto;
+#cancelEdit {
+    background: #ff8c42;
+}
+
+#cancelEdit:hover {
+    background: #e6762f;
+}
+
+.toolbar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.toolbar input {
+    flex: 1;
+}
+
+.table-wrapper {
+    background: #b9d6ff;
+    padding: 25px;
+    border-radius: 18px;
+    border: 3px solid #2d7ef7;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-}
-
-th, td {
-    border: 1px solid #b0c4de;
-    padding: 15px;
-    text-align: left;
-    font-size: 1.1rem;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
 }
 
 th {
-    background: #bbdefb; 
-    color: #0d47a1;
-    text-transform: uppercase;
+    background: #2d7ef7;
+    color: white;
+    padding: 12px;
+}
+
+td {
+    padding: 10px;
+    border-bottom: 1px solid #e6eaf0;
 }
 
 tr:nth-child(even) {
-    background: #f1f8ff;
+    background: #f4f8ff;
 }
 
 tr:hover {
-    background: #e1f5fe;
+    background: #dceaff;
+}
+
+td button {
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    margin-right: 5px;
+}
+
+td button[data-edit] {
+    background: #22c55e;
+}
+
+td button[data-edit]:hover {
+    background: #16a34a;
+}
+
+td button[data-delete] {
+    background: #ef4444;
+}
+
+td button[data-delete]:hover {
+    background: #dc2626;
 }
 
 .error {
-    color: #d32f2f;
-    font-size: 14px;
-    margin-top: 5px;
-    font-weight: bold;
+    color: #e74c3c;
+    font-size: 12px;
 }
 
 .invalid {
-    border-color: #e57373 !important;
-    background-color: #ffebee !important;
+    border-color: #e74c3c !important;
+}
+
+.hidden {
+    display: none;
 }
