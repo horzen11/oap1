@@ -1,0 +1,201 @@
+body{
+    margin:0;
+    font-family:Arial;
+    background:#cfe3ff;
+    padding:20px;
+}
+
+.page-bg{
+    max-width:1200px;
+    margin:auto;
+}
+
+.layout{
+    display:flex;
+    gap:20px;
+    align-items:flex-start;
+}
+
+.block{
+    background:#fff;
+    padding:20px;
+    border-radius:16px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+.form-block{
+    flex:1.4;
+    border-left:6px solid #2d7ef7;
+}
+
+.table-block{
+    flex:2;
+    border-left:6px solid #ff8c42;
+}
+
+.field{
+    display:flex;
+    gap:12px;
+    margin-bottom:12px;
+    align-items:flex-start;
+}
+
+.input-label{
+    width:160px;
+    font-weight:bold;
+    color:#1e3a5f;
+}
+
+.input-box{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+}
+
+.input-box input,
+.input-box textarea,
+.input-box select{
+    padding:10px;
+    border:1px solid #cfd8e3;
+    border-radius:8px;
+    background:#f9fbfd;
+}
+
+.hint{
+    font-size:11px;
+    color:#6b7a90;
+    margin-top:3px;
+}
+
+.row{
+    display:flex;
+    gap:20px;
+}
+
+.row .field{
+    flex:1;
+    flex-direction:column;
+}
+
+.row .input-label{
+    width:auto;
+}
+
+.buttons button[type="submit"]{
+    background:#22c55e;
+    color:white;
+}
+
+#cancelEdit{
+    background:#ef4444;
+    color:white;
+}
+
+.toolbar{
+    display:flex;
+    gap:10px;
+    margin-bottom:10px;
+}
+
+#searchInput{
+    flex:1;
+    padding:10px;
+    border:1px solid #cfd8e3;
+    border-radius:8px;
+}
+
+#sortBtn{
+    background:#ff8c42;
+    color:white;
+    border:none;
+    border-radius:8px;
+    padding:10px 16px;
+    cursor:pointer;
+}
+
+#sortBtn:hover{
+    opacity:0.9;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:10px;
+}
+
+th{
+    background:#2d7ef7;
+    color:white;
+    padding:10px;
+    text-align:left;
+}
+
+th[data-sort]{
+    cursor:pointer;
+    transition:0.2s;
+}
+
+th[data-sort]:hover{
+    background:#1d68d8;
+}
+
+td{
+    padding:10px;
+    border-bottom:1px solid #eee;
+}
+
+tr:hover{
+    background:#eef5ff;
+}
+
+button{
+    margin-top:10px;
+    margin-right:8px;
+    padding:8px;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+button[data-edit]{
+    background:#2d7ef7;
+    color:white;
+}
+
+button[data-delete]{
+    background:#ef4444;
+    color:white;
+}
+
+.error{
+    color:#e74c3c;
+    font-size:12px;
+}
+
+.invalid{
+    border:1px solid #e74c3c !important;
+}
+
+.editing-row{
+    background:#ffe9a8 !important;
+    font-weight:bold;
+}
+
+.hidden{
+    display:none;
+}
+
+form{
+    padding:12px;
+}
+
+@media (max-width:900px){
+
+    .layout{
+        flex-direction:column;
+    }
+
+    .toolbar{
+        flex-direction:column;
+    }
+}
