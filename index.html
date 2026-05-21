@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Реєстр заявок на обладнання</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="page-bg">
+
+    <div class="container">
+
+        <h1 id="formTitle">Нова заявка</h1>
+
+        <form id="form" class="form">
+
+            <input type="text" id="itemCode" placeholder="Код обладнання (тільки цифри)">
+            <small id="itemCodeError" class="error"></small>
+
+            <input type="text" id="userName" placeholder="Користувач">
+            <small id="userNameError" class="error"></small>
+
+            <div class="row">
+                <input type="date" id="dateFrom">
+                <input type="date" id="dateTo">
+            </div>
+            <small id="dateError" class="error"></small>
+
+            <textarea id="comment" placeholder="Коментар"></textarea>
+            <small id="commentError" class="error"></small>
+
+            <select id="status">
+                <option value="New">Нова</option>
+                <option value="Approved">Підтверджено</option>
+                <option value="Rejected">Відхилено</option>
+            </select>
+
+            <div class="buttons">
+                <button type="submit" id="submitBtn">Зберегти</button>
+                <button type="button" id="cancelEdit" class="hidden">Скасувати</button>
+            </div>
+
+        </form>
+
+        <div class="toolbar">
+            <input type="text" id="searchInput" placeholder="Пошук...">
+            <button id="toggleSort">Сортування</button>
+        </div>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Код обладнання</th>
+                        <th>Користувач</th>
+                        <th>Дата з</th>
+                        <th>Дата до</th>
+                        <th>Коментар</th>
+                        <th>Статус</th>
+                        <th>Дії</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody"></tbody>
+            </table>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
