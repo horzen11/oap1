@@ -56,7 +56,6 @@ export const requestsService = {
     return requestsRepository.getWithUsers(status);
   },
 
-
   async getLatestByStatus(query: Record<string, unknown>) {
     const status = typeof query.status === "string" ? query.status : "New";
     const rawLimit = Number(query.limit ?? 10);
@@ -68,8 +67,45 @@ export const requestsService = {
 
     return requestsRepository.getLatestByStatus(status, limit);
   },
+
   async getStatsByStatus() {
     return requestsRepository.getStatsByStatus();
+  },
+
+  async getFullStats(query: Record<string, unknown>) {
+    const status = typeof query.status === "string" ? query.status : undefined;
+
+    if (status && !statuses.includes(status as RequestStatus)) {
+      throw new ApiError(
+        400,
+        "VALIDATION_ERROR",
+        `status must be one of: ${statuses.join(", ")}`
+      );
+    }
+
+    const rows = await requestsRepository.getFullStats(status);
+
+    const totalRequests = rows.length;
+
+    const totalComments = rows.reduce(
+      (sum, row) => sum + Number(row.commentsCount),
+      0
+    );
+
+    const users = new Set(rows.map((row) => row.userId));
+
+    const byStatus = statuses.map((statusValue) => ({
+      status: statusValue,
+      count: rows.filter((row) => row.status === statusValue).length,
+    }));
+
+    return {
+      totalRequests,
+      totalComments,
+      totalUsersWithRequests: users.size,
+      byStatus,
+      requests: rows,
+    };
   },
 
   async create(dto: CreateRequestRequestDto): Promise<EquipmentRequest> {

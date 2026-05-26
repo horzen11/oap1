@@ -7,6 +7,7 @@ export const requestRoutes = Router();
 requestRoutes.get("/search-unsafe", asyncHandler(requestsController.searchUnsafe));
 requestRoutes.get("/with-users", asyncHandler(requestsController.getWithUsers));
 requestRoutes.get("/stats/by-status", asyncHandler(requestsController.getStatsByStatus));
+requestRoutes.get("/stats/full", asyncHandler(requestsController.getFullStats));
 requestRoutes.get("/latest-by-status", asyncHandler(requestsController.getLatestByStatus));
 requestRoutes.get("/", asyncHandler(requestsController.getAll));
 requestRoutes.get("/:id", asyncHandler(requestsController.getById));

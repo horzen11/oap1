@@ -78,7 +78,36 @@ export const requestsRepository = {
       ORDER BY total DESC;
     `);
   },
+  getFullStats(status?: string) {
+    const where = status ? `WHERE r.status = ${sqlString(status)}` : "";
 
+    return all<{
+      requestId: string;
+      itemCode: string;
+      status: string;
+      userId: string;
+      userName: string;
+      userEmail: string;
+      userRole: string;
+      commentsCount: number;
+    }>(`
+      SELECT
+        r.id AS requestId,
+        r.itemCode,
+        r.status,
+        r.userId,
+        u.fullName AS userName,
+        u.email AS userEmail,
+        u.role AS userRole,
+        COUNT(c.id) AS commentsCount
+      FROM Requests r
+      JOIN Users u ON u.id = r.userId
+      LEFT JOIN RequestComments c ON c.requestId = r.id
+      ${where}
+      GROUP BY r.id, r.itemCode, r.status, r.userId, u.fullName, u.email, u.role
+      ORDER BY commentsCount DESC;
+    `);
+  },
   async add(request: EquipmentRequest): Promise<EquipmentRequest> {
     await run(`
       INSERT INTO Requests (id, itemCode, userId, dateFrom, dateTo, comment, status, createdAt, updatedAt)

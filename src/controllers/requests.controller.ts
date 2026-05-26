@@ -35,7 +35,13 @@ export const requestsController = {
     const items = await requestsService.getStatsByStatus();
     res.status(200).json({ items });
   },
+  async getFullStats(req: Request, res: Response) {
+    const stats = await requestsService.getFullStats(req.query);
 
+    res.status(200).json({
+      data: stats,
+    });
+  },
   async create(req: Request, res: Response) {
     const request = await requestsService.create(req.body);
     res.status(201).json(toRequestResponseDto(request));
