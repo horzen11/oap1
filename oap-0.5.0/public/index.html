@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Реєстр заявок</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="page-bg">
+
+    <div class="layout">
+
+        <section class="block form-block">
+
+            <h1 id="formTitle">Нова заявка</h1>
+
+            <form id="form">
+
+                <div class="field">
+
+                    <span class="input-label">
+                        Код обладнання:
+                    </span>
+
+                    <div class="input-box">
+
+                        <input
+                            type="text"
+                            id="itemCode"
+                        >
+
+                        <span class="hint">
+                            введіть код пристрою
+                        </span>
+
+                        <small
+                            id="itemCodeError"
+                            class="error"
+                        ></small>
+
+                    </div>
+
+                </div>
+
+                <div class="field">
+
+                    <span class="input-label">
+                        Користувач:
+                    </span>
+
+                    <div class="input-box">
+
+                        <input
+                            type="text"
+                            id="userName"
+                        >
+
+                        <span class="hint">
+                            хто створює заявку
+                        </span>
+
+                        <small
+                            id="userNameError"
+                            class="error"
+                        ></small>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="field">
+
+                        <span class="input-label">
+                            Дата з:
+                        </span>
+
+                        <div class="input-box">
+
+                            <input
+                                type="date"
+                                id="dateFrom"
+                            >
+
+                            <span class="hint">
+                                початкова дата
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="field">
+
+                        <span class="input-label">
+                            Дата до:
+                        </span>
+
+                        <div class="input-box">
+
+                            <input
+                                type="date"
+                                id="dateTo"
+                            >
+
+                            <span class="hint">
+                                кінцева дата
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <small
+                    id="dateError"
+                    class="error"
+                ></small>
+
+                <div class="field">
+
+                    <span class="input-label">
+                        Коментар:
+                    </span>
+
+                    <div class="input-box">
+
+                        <textarea id="comment"></textarea>
+
+                        <span class="hint">
+                            додаткова інформація
+                        </span>
+
+                        <small
+                            id="commentError"
+                            class="error"
+                        ></small>
+
+                    </div>
+
+                </div>
+
+                <div class="field">
+
+                    <span class="input-label">
+                        Статус:
+                    </span>
+
+                    <div class="input-box">
+
+                        <select id="status">
+
+                            <option value="New">
+                                Нова
+                            </option>
+
+                            <option value="Approved">
+                                Підтверджено
+                            </option>
+
+                            <option value="Rejected">
+                                Відхилено
+                            </option>
+
+                        </select>
+
+                        <span class="hint">
+                            стан заявки
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="buttons">
+
+                    <button type="submit">
+                        Зберегти
+                    </button>
+
+                    <button
+                        type="button"
+                        id="cancelEdit"
+                        class="hidden"
+                    >
+                        Скасувати
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+        <section class="block table-block">
+
+            <div class="toolbar">
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Пошук..."
+                >
+
+                <button id="sortBtn">
+                    Сортування ↑
+                </button>
+
+            </div>
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>#</th>
+
+                            <th data-sort="itemCode">
+                                Код
+                            </th>
+
+                            <th data-sort="userName">
+                                Користувач
+                            </th>
+
+                            <th data-sort="dateFrom">
+                                Дата з
+                            </th>
+
+                            <th data-sort="dateTo">
+                                Дата до
+                            </th>
+
+                            <th data-sort="comment">
+                                Коментар
+                            </th>
+
+                            <th data-sort="status">
+                                Статус
+                            </th>
+
+                            <th data-sort="id">
+                                Дії
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="tableBody"></tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
