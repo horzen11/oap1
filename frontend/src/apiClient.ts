@@ -111,3 +111,15 @@ export async function createUser(dto: CreateUserRequestDto) {
     body: JSON.stringify(dto),
   });
 }
+export async function getEndpointUsers() {
+  return request<any>(`${USERS_PATH}?page=1&pageSize=100`);
+}
+
+export async function getEndpointRequests() {
+  return request<any>(`${REQUESTS_PATH}?page=1&pageSize=100`);
+}
+
+export async function getEndpointRequestComments() {
+  return request<any>("/request-comments");
+
+}

@@ -44,7 +44,7 @@ export function createApp() {
     res.status(200).json({ ok: true });
   });
 
-  // ЛР4: стабільна версійність API. Старі /api/... маршрути залишено для сумісності з ЛР3.
+
   app.use("/api/v1/users", userRoutes);
   app.use("/api/v1/requests", requestRoutes);
   app.use("/api/v1/request-comments", requestCommentRoutes);

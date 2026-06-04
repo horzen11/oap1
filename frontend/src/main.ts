@@ -8,6 +8,9 @@ import {
   getUsers,
   removeRequest,
   updateRequest,
+  getEndpointUsers,
+  getEndpointRequests,
+  getEndpointRequestComments,
 } from "./apiClient";
 
 import type {
@@ -131,6 +134,28 @@ app.innerHTML = `
 
       <div id="notice"></div>
       <div id="listStatus"></div>
+      <div class="endpoint-panel">
+  <h2>Перевірка API</h2>
+
+  <div class="buttons">
+    <button type="button" id="usersEndpointBtn">
+      Users
+    </button>
+
+    <button type="button" id="requestsEndpointBtn">
+      Requests
+    </button>
+
+    <button type="button" id="commentsEndpointBtn">
+      Request Comments
+    </button>
+  </div>
+
+  <table>
+    <thead id="endpointHead"></thead>
+    <tbody id="endpointBody"></tbody>
+  </table>
+</div>
 
       <div class="table-wrapper">
         <table>
@@ -171,6 +196,21 @@ const saveBtn = document.querySelector<HTMLButtonElement>("#saveBtn")!;
 const cancelEditBtn = document.querySelector<HTMLButtonElement>("#cancelEdit")!;
 const listStatus = document.querySelector<HTMLDivElement>("#listStatus")!;
 const notice = document.querySelector<HTMLDivElement>("#notice")!;
+const usersEndpointBtn =
+  document.querySelector<HTMLButtonElement>("#usersEndpointBtn")!;
+
+const requestsEndpointBtn =
+  document.querySelector<HTMLButtonElement>("#requestsEndpointBtn")!;
+
+const commentsEndpointBtn =
+  document.querySelector<HTMLButtonElement>("#commentsEndpointBtn")!;
+
+const endpointHead =
+  document.querySelector<HTMLTableSectionElement>("#endpointHead")!;
+
+const endpointBody =
+  document.querySelector<HTMLTableSectionElement>("#endpointBody")!;
+
 
 itemCodeInput.addEventListener("input", () => {
   itemCodeInput.value = itemCodeInput.value.replace(/\D/g, "").slice(0, 12);
@@ -459,7 +499,90 @@ function normalizeError(error: unknown): ApiErrorDto {
     details: null,
   };
 }
+function normalizeEndpointItems(result: any): any[] {
+  if (Array.isArray(result)) return result;
+  if (Array.isArray(result.items)) return result.items;
+  if (Array.isArray(result.data)) return result.data;
+  return [];
+}
 
+function renderEndpointTable(result: any) {
+  endpointHead.textContent = "";
+  endpointBody.textContent = "";
+
+  const items = normalizeEndpointItems(result);
+
+  if (items.length === 0) {
+    endpointBody.innerHTML = `
+      <tr>
+        <td>Даних немає</td>
+      </tr>
+    `;
+    return;
+  }
+
+  const columns = Object.keys(items[0]);
+
+  const headRow = document.createElement("tr");
+
+  columns.forEach((column) => {
+    const th = document.createElement("th");
+    th.textContent = column;
+    headRow.appendChild(th);
+  });
+
+  endpointHead.appendChild(headRow);
+
+  items.forEach((item) => {
+    const row = document.createElement("tr");
+
+    columns.forEach((column) => {
+      const td = document.createElement("td");
+      const value = item[column];
+
+      td.textContent =
+        value === null || value === undefined
+          ? ""
+          : typeof value === "object"
+          ? JSON.stringify(value)
+          : String(value);
+
+      row.appendChild(td);
+    });
+
+    endpointBody.appendChild(row);
+  });
+}
+
+usersEndpointBtn.addEventListener("click", async () => {
+  try {
+    const result = await getEndpointUsers();
+    renderEndpointTable(result);
+    showNotice("Users endpoint викликано", "success");
+  } catch (error) {
+    showApiError(error);
+  }
+});
+
+requestsEndpointBtn.addEventListener("click", async () => {
+  try {
+    const result = await getEndpointRequests();
+    renderEndpointTable(result);
+    showNotice("Requests endpoint викликано", "success");
+  } catch (error) {
+    showApiError(error);
+  }
+});
+
+commentsEndpointBtn.addEventListener("click", async () => {
+  try {
+    const result = await getEndpointRequestComments();
+    renderEndpointTable(result);
+    showNotice("Request comments endpoint викликано", "success");
+  } catch (error) {
+    showApiError(error);
+  }
+});
 reloadBtn.addEventListener("click", () => {
   void loadAll();
 });

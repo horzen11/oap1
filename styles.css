@@ -155,3 +155,33 @@ td button[data-delete]:hover {
 .hidden {
     display: none;
 }
+.layout {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.table-block {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  table-layout: auto;
+}
+
+td,
+th {
+  white-space: normal;
+  word-break: break-word;
+}
+
+td:last-child {
+  min-width: 160px;
+}
